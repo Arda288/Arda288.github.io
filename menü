@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restoran Menüsü</title>
+    <style>
+        /* Tüm öğeler için sıfırlama */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Tam ekran ayarları */
+        html, body {
+            height: 100%;
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            margin: 0;
+        }
+
+        /* Menü kapsayıcıyı tam ekran kaplayacak şekilde ayarla */
+        .menu-container {
+            width: 100%;
+            height: 100vh;
+            padding: 20px;
+            background-color: #fff;
+            overflow-y: auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #d35400;
+            margin-bottom: 20px;
+        }
+
+        /* Menü başlıkları */
+        .menu-nav {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        .menu-nav div {
+            padding: 10px 20px;
+            background-color: #d35400;
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .menu-nav div:hover {
+            background-color: #b93e00;
+        }
+
+        /* Menü bölümleri */
+        .menu-section {
+            display: none;
+            margin-bottom: 30px;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 15px 0;
+            font-size: 1.1em;
+        }
+
+        .menu-item-name {
+            font-weight: bold;
+        }
+
+        .menu-item-price {
+            color: #d35400;
+            font-weight: bold;
+        }
+
+        .menu-description {
+            font-size: 0.9em;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<div class="menu-container">
+    <h1>Restoran Menüsü</h1>
+    
+    <!-- Menü Başlıkları -->
+    <div class="menu-nav">
+        <div onclick="showMenu('baslangic')">Başlangıçlar</div>
+        <div onclick="showMenu('anayemek')">Ana Yemekler</div>
+        <div onclick="showMenu('tatli')">Tatlılar</div>
+        <div onclick="showMenu('icecek')">İçecekler</div>
+    </div>
+    
+    <!-- Menü Bölümleri -->
+    <div class="menu-section" id="baslangic">
+        <h2>Başlangıçlar</h2>
+        <div class="menu-item">
+            <div>
+                <span class="menu-item-name">Çorba</span>
+                <p class="menu-description">Günün taze çorbası, sıcak servis edilir.</p>
+            </div>
+            <span class="menu-item-price">25₺</span>
+        </div>
+        <div class="menu-item">
+            <div>
+                <span class="menu-item-name">Humus</span>
+                <p class="menu-description">Ev yapımı, tahinli ve zeytinyağlı humus.</p>
+            </div>
+            <span class="menu-item-price">30₺</span>
+        </div>
+    </div>
+    
+    <div class="menu-section" id="anayemek">
+        <h2>Ana Yemekler</h2>
+        <div class="menu-item">
+            <div>
+                <span class="menu-item-name">Izgara Tavuk</span>
+                <p class="menu-description">Izgarada pişmiş, baharatlarla marine edilmiş tavuk göğsü.</p>
+            </div>
+            <span class="menu-item-price">55₺</span>
+        </div>
+        <div class="menu-item">
+            <div>
+                <span class="menu-item-name">Spagetti Bolonez</span>
+                <p class="menu-description">Domates sosu ve kıymalı İtalyan spagetti.</p>
+            </div>
+            <span class="menu-item-price">60₺</span>
+        </div>
+    </div>
+    
+    <div class="menu-section" id="tatli">
+        <h2>Tatlılar</h2>
+        <div class="menu-item">
+            <div>
+                <span class="menu-item-name">Cheesecake</span>
+                <p class="menu-description">Kremalı, limon aromalı cheesecake.</p>
+            </div>
+            <span class="menu-item-price">35₺</span>
+        </div>
+        <div class="menu-item">
+            <div>
+                <span class="menu-item-name">Profiterol</span>
+                <p class="menu-description">Çikolata soslu hafif profiterol.</p>
+            </div>
+            <span class="menu-item-price">30₺</span>
+        </div>
+    </div>
+    
+    <div class="menu-section" id="icecek">
+        <h2>İçecekler</h2>
+        <div class="menu-item">
+            <div>
+                <span class="menu-item-name">Ayran</span>
+            </div>
+            <span class="menu-item-price">10₺</span>
+        </div>
+        <div class="menu-item">
+            <div>
+                <span class="menu-item-name">Soda</span>
+            </div>
+            <span class="menu-item-price">8₺</span>
+        </div>
+        <div class="menu-item">
+            <div>
+                <span class="menu-item-name">Limonata</span>
+                <p class="menu-description">Taze sıkılmış limon ve nane ile.</p>
+            </div>
+            <span class="menu-item-price">15₺</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Menü kategorilerini göster/gizle
+    function showMenu(sectionId) {
+        var sections = document.querySelectorAll('.menu-section');
+        sections.forEach(function(section) {
+            section.style.display = 'none';
+        });
+
+        // Seçilen bölümü göster
+        document.getElementById(sectionId).style.display = 'block';
+    }
+
+    // Varsayılan olarak ilk menüyü göster
+    document.addEventListener('DOMContentLoaded', function() {
+        showMenu('baslangic');
+    });
+</script>
+
+</body>
+</html>
